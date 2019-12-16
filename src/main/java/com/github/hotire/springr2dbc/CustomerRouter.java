@@ -23,7 +23,7 @@ public class CustomerRouter {
 
   /**
    * CommandLineRunner
-   * Application 구동 시점에 시점에 실행되는 코드
+   * Application 구동 시점에 실행되는 코드
    */
   @Bean
   public CommandLineRunner config(CustomerRepository customerRepository) {
