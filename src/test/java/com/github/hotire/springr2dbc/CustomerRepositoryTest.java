@@ -1,5 +1,7 @@
 package com.github.hotire.springr2dbc;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.Arrays;
 import javax.annotation.PostConstruct;
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,14 @@ class CustomerRepositoryTest {
   void findAll() {
     final Flux<Customer> customerFlux = repository.findAll();
     StepVerifier.create(customerFlux).expectNextCount(2).verifyComplete();
+  }
+
+  @Test
+  void findByLastName() {
+    final Flux<Customer> customerFlux = repository.findByLastName("Tire");
+    StepVerifier.create(customerFlux)
+      .consumeNextWith(customer -> assertThat(customer.getFirstName()).isEqualTo("Ho"))
+      .verifyComplete();
   }
 
 }
