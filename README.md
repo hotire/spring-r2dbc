@@ -10,7 +10,7 @@
 
 ### Entity
 
-```
+```java
 @Data
 public class Customer {
 
@@ -31,7 +31,7 @@ public class Customer {
 
 ### Repository
 
-```
+```java
 public interface CustomerRepository extends ReactiveCrudRepository<Customer, Long> {
   @Query("SELECT * FROM customer WHERE last_name = :lastname")
   Flux<Customer> findByLastName(String lastName);
@@ -40,7 +40,7 @@ public interface CustomerRepository extends ReactiveCrudRepository<Customer, Lon
 
 ### Test
 
-```
+```java
 @DataR2dbcTest
 class CustomerRepositoryTest {
 
